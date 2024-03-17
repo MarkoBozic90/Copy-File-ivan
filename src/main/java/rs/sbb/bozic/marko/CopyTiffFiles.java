@@ -36,10 +36,13 @@ public class CopyTiffFiles {
 
         String rootDirectoryPath = "C:\\Users\\bozic\\Documents\\New folder\\";
 
-        List<File> allDirectories = getAllDirectories(new File(rootDirectoryPath));
+//        List<File> allDirectories = getAllDirectories(new File("C:\\Users\\marko\\Videos\\"));
+        List<File> allDirectories = getAllDirectories(new File(args[0]+"\\"));
 
         for (File directory : allDirectories) {
-            listDirs1(directory, args[0], args[1]);
+            listDirs1(directory, args[0], args[1]+"\\");
+            //            listDirs1(directory, "C:\\Users\\marko\\Videos", "C:\\Users\\marko\\Pictures\\");
+
         }
     }
 
@@ -63,10 +66,11 @@ public class CopyTiffFiles {
 
         String path = file.getAbsolutePath().replace(finalPath, "").replace(file.getName(),"");
 
+
         String location= copyPath+path+"\\";
         File file1 = new File(location);
         Path startLocation = file.toPath();
-        Path endLocation = Path.of(location + file.getName());
+        Path endLocation = Path.of(copyPath+"\\" + path.replace("\\","")+"-"+file.getName());
 
         try {
             if (!file1.exists()) {

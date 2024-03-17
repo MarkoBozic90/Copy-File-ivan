@@ -17,10 +17,10 @@ public class Application {
 
         //String rootDirectoryPath = "C:\\Users\\bozic\\Documents\\New folder\\";
 
-        List<File> allDirectories = getAllDirectories(new File(args[0]));
+        List<File> allDirectories = getAllDirectories(new File(args[0]+"\\"));
 
         for (File directory : allDirectories) {
-            listDirs1(directory, args[0], args[1]);
+            listDirs1(directory, args[0]+ "\\", args[1] + "\\");
         }
 
     }
